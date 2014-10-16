@@ -14,8 +14,13 @@ blogPostForm = BlogPostForm
 
 getPostNewR :: Handler Html
 getPostNewR = do
+    (widget, enctype) <- generateFormPost $ renderBootstrap blogPostForm
     defaultLayout $ do
         $(widgetFile "posts/new")
 
 postPostNewR :: Handler Html
-postPostNewR = error "Implement this function"
+postPostNewR = do
+  ((res, widget), enctype) <- runFormPost $ renderBootstrap blogPostForm
+  case res of
+    FormSuccess form -> error "todo"
+    _ -> defaultLayout $(widgetFile "posts/new")

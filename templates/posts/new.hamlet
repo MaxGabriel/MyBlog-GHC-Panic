@@ -1,4 +1,6 @@
 <div class="row">
     <h1>New Post
 
-    <form>
+    <form method=post enctype=#{enctype} action=@{PostNewR}>
+        ^{widget}
+        <button class="btn btn-primary btn-large">Create Post
